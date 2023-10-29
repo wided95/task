@@ -1,12 +1,36 @@
 "use client";
 import Header from "@/components/Header";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useState } from "react";
 export default function Login() {
+  //return session
+  const session = useSession();
+  //@Des-function used for login with google
   const handleClick = (e) => {
     e.preventDefault();
     signIn("google");
+    localStorage.setItem("user", JSON.stringify(session?.data?.user));
   };
+  //
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  //
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  //validation form
+  const handleValidation = () => {
+    if (!user.email) {
+      setEmail("Email Required");
+    }
+    if (!user.password) {
+      setPassword("Password Required");
+    }
+  };
+
   return (
     <main
       className="landing-page-container overflow-hidden"
@@ -59,21 +83,39 @@ export default function Login() {
                   </div>
                 </div>
                 <div className="min-w-full flex flex-col gap-5">
-                  <input
-                    className="w-full py-4  font-medium  border-b border-black placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                    type="email"
-                    placeholder="Email"
-                  />
-                  <input
-                    className="w-full py-4  font-medium  border-b border-black placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                    type="password"
-                    placeholder="Password"
-                  />
+                  <div>
+                    <input
+                      className={`w-full py-4  font-medium  border-b ${
+                        email ? "border-red-600" : "border-black"
+                      } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
+                      type="email"
+                      placeholder="Email"
+                      onChange={(e) =>
+                        setUser({ ...user, email: e.target.value })
+                      }
+                    />
+                    {email && (
+                      <span className="text-red-600 text-xs">{email}</span>
+                    )}
+                  </div>
+                  <div>
+                    <input
+                      className={`w-full py-4  font-medium  border-b ${
+                        password ? "border-red-600" : "border-black"
+                      } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
+                      type="password"
+                      placeholder="Password"
+                      onChange={(e) =>
+                        setUser({ ...user, password: e.target.value })
+                      }
+                    />
+                    {password && (
+                      <span className="text-red-600 text-xs">{password}</span>
+                    )}
+                  </div>
                   <button
                     className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-                    onClick={() =>
-                      localStorage.setItem("token", "dsdsdsdsddsdsd")
-                    }
+                    onClick={() => handleValidation()}
                   >
                     <svg
                       className="w-6 h-6 -ml-2"

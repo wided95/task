@@ -1,9 +1,53 @@
 "use client";
 import Header from "@/components/Header";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 function SignUp() {
+  //
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+  //
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  //
+  const handleValidation = () => {
+    // Use a regular expression to validate the email format
+    const emailRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const isValid = emailRegex.test(email);
+    //
+    const passwordValidation = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i.test(
+      password
+    );
+    if (!user.firstName) {
+      setFirstName("FirstName Required");
+    }
+    if (!user.lastName) {
+      setLastName("LastName Required");
+    }
+    if (!user.email) {
+      setEmail("Email Required");
+    }
+    if (user.email && !isValid) {
+      setEmail("Invalid Email");
+    }
+    if (!user.password) {
+      setPassword("Password Required");
+    }
+    if (user.password && !passwordValidation) {
+      setPassword(
+        "Minimum eight characters, at least one letter and one number"
+      );
+    }
+  };
   return (
     <main className="landing-page-container overflow-hidden">
       <Header />
@@ -61,27 +105,69 @@ function SignUp() {
                 </div>
                 <div className="min-w-full flex flex-col gap-5">
                   <div className="flex gap-5">
-                    <input
-                      className="w-full py-4  font-medium  border-b border-black placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                      type="text"
-                      placeholder="First Name"
-                    />
-                    <input
-                      className="w-full py-4  font-medium  border-b border-black placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                      type="email"
-                      placeholder="Last Name"
-                    />
+                    <div>
+                      <input
+                        className={`w-full py-4  font-medium  border-b ${
+                          firstName ? "border-red-600" : "border-black"
+                        } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
+                        type="text"
+                        placeholder="First Name"
+                        onChange={(e) =>
+                          setUser({ ...user, firstName: e.target.value })
+                        }
+                      />
+                      {firstName && (
+                        <span className="text-red-600 text-xs">
+                          {firstName}
+                        </span>
+                      )}
+                    </div>
+                    <div>
+                      <input
+                        className={`w-full py-4  font-medium  border-b ${
+                          lastName ? "border-red-600" : "border-black"
+                        } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
+                        type="text"
+                        placeholder="Last Name"
+                        onChange={(e) =>
+                          setUser({ ...user, lastName: e.target.value })
+                        }
+                      />
+                      {lastName && (
+                        <span className="text-red-600 text-xs">{lastName}</span>
+                      )}
+                    </div>
                   </div>
-                  <input
-                    className="w-full py-4  font-medium  border-b border-black placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                    type="email"
-                    placeholder="Email"
-                  />
-                  <input
-                    className="w-full py-4  font-medium  border-b border-black placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                    type="password"
-                    placeholder="Password"
-                  />
+                  <div>
+                    <input
+                      className={`w-full py-4  font-medium  border-b ${
+                        email ? "border-red-600" : "border-black"
+                      } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
+                      type="email"
+                      placeholder="Email"
+                      onChange={(e) =>
+                        setUser({ ...user, email: e.target.value })
+                      }
+                    />
+                    {email && (
+                      <span className="text-red-600 text-xs">{email}</span>
+                    )}
+                  </div>
+                  <div>
+                    <input
+                      className={`w-full py-4  font-medium  border-b ${
+                        password ? "border-red-600" : "border-black"
+                      } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
+                      type="password"
+                      placeholder="Password"
+                      onChange={(e) =>
+                        setUser({ ...user, password: e.target.value })
+                      }
+                    />
+                    {password && (
+                      <span className="text-red-600 text-xs">{password}</span>
+                    )}
+                  </div>
                   <div className="flex items-center min-w-full gap-2">
                     <input type="checkbox" className="rounded-lg w-4 h-4" />
                     <span className="text-sm whitespace-nowrap">
@@ -107,9 +193,7 @@ function SignUp() {
                   </p>
                   <button
                     className="mt-5 tracking-wide font-semibold bg-black text-gray-100 w-full py-4 rounded-full hover:bg-white hover:text-black hover:border-black hover:border transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline"
-                    onClick={() =>
-                      localStorage.setItem("token", "dsdsdsdsddsdsd")
-                    }
+                    onClick={() => handleValidation()}
                   >
                     <svg
                       className="w-6 h-6 -ml-2"

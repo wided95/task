@@ -4,11 +4,12 @@ import Demo from "@/components/Demo";
 import Header from "@/components/Header";
 import Testimonial from "@/components/Testimonial";
 import UploadFile from "@/components/UploadFile";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
-  //
-  const auth = localStorage.getItem("token");
-  
+  //get user from localStorage
+  const auth = localStorage.getItem("user");
+
   return (
     <main
       className="landing-page-container overflow-hidden"
