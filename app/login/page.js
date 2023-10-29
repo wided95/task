@@ -1,10 +1,17 @@
 "use client";
 import Header from "@/components/Header";
 import Link from "next/link";
-
+import { signIn } from "next-auth/react";
 export default function Login() {
+  const handleClick = (e) => {
+    e.preventDefault();
+    signIn("google");
+  };
   return (
-    <main className="landing-page-container overflow-hidden">
+    <main
+      className="landing-page-container overflow-hidden"
+      style={{ backgroundColor: "#F5EFE6" }}
+    >
       <Header />
       <div
         style={{ backgroundColor: "#F5EFE6" }}
@@ -15,7 +22,10 @@ export default function Login() {
             <div className="flex flex-col items-start">
               <div className="w-full flex-1">
                 <div className=" w-full flex flex-col items-center">
-                  <button className="min-w-full max-w-xs font-bold shadow-sm py-2 bg-white-100 border border-black rounded-full text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+                  <button
+                    onClick={(e) => handleClick(e)}
+                    className="min-w-full max-w-xs font-bold shadow-sm py-2 bg-white-100 border border-black rounded-full text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+                  >
                     <div className="bg-white p-1 rounded-full">
                       <img className="w-[2vw]" src="images/Group 2.svg" />
                     </div>

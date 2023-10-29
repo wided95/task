@@ -6,7 +6,7 @@ import Link from "next/link";
 const Header = () => {
   const router = useRouter();
   return (
-    <header className="w-full flex items-center justify-between p-2">
+    <header className="w-full flex items-center justify-between p-2 bg-white">
       <Link
         href="/"
         className="text-center text-2xl sm:text-4xl font-bold landing-page-title whitespace-nowrap"

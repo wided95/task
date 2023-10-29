@@ -8,12 +8,16 @@ import UploadFile from "@/components/UploadFile";
 export default function Home() {
   //
   const auth = localStorage.getItem("token");
+  
   return (
-    <main className="landing-page-container overflow-hidden">
+    <main
+      className="landing-page-container overflow-hidden"
+      style={{ backgroundColor: "#F5EFE6" }}
+    >
       <Header />
       <div
         style={{ backgroundColor: "#F5EFE6" }}
-        className="w-full max-h-[89vh] min-h-[88vh] px-24 box-border"
+        className="w-full min-h-[88vh] md:py-0 py-8 px-24 box-border"
       >
         <div
           className="flex items-center justify-center gap-5 w-full min-h-[88vh] flex-wrap 

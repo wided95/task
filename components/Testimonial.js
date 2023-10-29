@@ -14,7 +14,8 @@ export default function Testimonial() {
       name: "Emilie",
       description:
         "I appreciate the feedback regarding the CV.It’s concise and straight to he point. This is a great tool!",
-      imageURL: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      imageURL:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
     {
       name: "Anderson",
@@ -39,7 +40,7 @@ export default function Testimonial() {
             <div class="h-[100%]  mx-auto max-w-2xl lg:max-w-4xl">
               <figcaption class="md:mt-5 mt-10">
                 <img
-                  class="mx-auto h-10 w-10 rounded-full"
+                  class="mx-auto w-[8vw] h-[8vw] md:h-[4vw] md:w-[4vw] rounded-full"
                   src={testimonial.imageURL}
                   alt=""
                 />
