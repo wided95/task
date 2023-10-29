@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  overflow: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,4 +30,30 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+/********** Container CSS ************/
+.section-slider-container > div {
+  height: 100%;
+  width: 100% !important;
+}
+.react-slideshow-container {
+  height: 100%;
+  width: 100% !important;
+}
+.react-slideshow-container .slide {
+  height: 100%;
+  width: 100% !important;
+}
+.react-slideshow-wrapper .images-wrap.horizontal {
+  height: 100%;
+}
+.upload-file-container {
+  background: linear-gradient(109deg, #dbb898 25.3%, #9dc1ce 82.65%);
+}
+.landing-page-container {
+  @apply flex min-h-screen flex-col items-center justify-start;
+}
+/*********** Title ***************/
+.landing-page-title {
+  @apply w-full text-center text-gray-700 font-serif p-2 text-3xl;
 }
