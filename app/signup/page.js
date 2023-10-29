@@ -17,7 +17,7 @@ function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  //
+  //validation
   const handleValidation = () => {
     // Use a regular expression to validate the email format
     const emailRegex =
@@ -58,7 +58,7 @@ function SignUp() {
         <div className="max-w-[70%] m-0 max-h-[100%] bg-white shadow sm:rounded-lg flex justify-center flex-1 rounded-lg overflow-hidden">
           <div className="lg:w-1/1 xl:w-7/12 p-6 sm:p-12">
             <div className="flex flex-col items-start">
-              <h3 className="text-2xl xl:text-2xl font-medium">
+              <h3 className="text-2xl xl:text-2xl font-medium text-black">
                 Create an account
               </h3>
               <p className="text-xs text-gray-600 text-opacity-50">
@@ -107,7 +107,7 @@ function SignUp() {
                   <div className="flex gap-5">
                     <div>
                       <input
-                        className={`w-full py-4  font-medium  border-b ${
+                        className={`w-full py-4 text-black font-medium  border-b ${
                           firstName ? "border-red-600" : "border-black"
                         } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
                         type="text"
@@ -124,7 +124,7 @@ function SignUp() {
                     </div>
                     <div>
                       <input
-                        className={`w-full py-4  font-medium  border-b ${
+                        className={`w-full py-4 text-black font-medium  border-b ${
                           lastName ? "border-red-600" : "border-black"
                         } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
                         type="text"
@@ -140,7 +140,7 @@ function SignUp() {
                   </div>
                   <div>
                     <input
-                      className={`w-full py-4  font-medium  border-b ${
+                      className={`w-full py-4 text-black font-medium  border-b ${
                         email ? "border-red-600" : "border-black"
                       } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
                       type="email"
@@ -155,7 +155,7 @@ function SignUp() {
                   </div>
                   <div>
                     <input
-                      className={`w-full py-4  font-medium  border-b ${
+                      className={`w-full py-4 text-black font-medium  border-b ${
                         password ? "border-red-600" : "border-black"
                       } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
                       type="password"
@@ -170,7 +170,7 @@ function SignUp() {
                   </div>
                   <div className="flex items-center min-w-full gap-2">
                     <input type="checkbox" className="rounded-lg w-4 h-4" />
-                    <span className="text-sm whitespace-nowrap">
+                    <span className="text-sm whitespace-nowrap text-black">
                       Subscribe to our monthly newsletter
                     </span>
                   </div>
@@ -202,9 +202,7 @@ function SignUp() {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                    >
-                      {/* Checkmark SVG Paths */}
-                    </svg>
+                    ></svg>
                     <span className="ml-3">Sign Up</span>
                   </button>
                   <p className="min-w-full text-xs text-gray-600 text-opacity-50 text-center">

@@ -85,7 +85,7 @@ export default function Login() {
                 <div className="min-w-full flex flex-col gap-5">
                   <div>
                     <input
-                      className={`w-full py-4  font-medium  border-b ${
+                      className={`w-full py-4 text-black font-medium  border-b ${
                         email ? "border-red-600" : "border-black"
                       } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
                       type="email"
@@ -100,7 +100,7 @@ export default function Login() {
                   </div>
                   <div>
                     <input
-                      className={`w-full py-4  font-medium  border-b ${
+                      className={`w-full py-4 text-black font-medium  border-b ${
                         password ? "border-red-600" : "border-black"
                       } placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-white`}
                       type="password"
